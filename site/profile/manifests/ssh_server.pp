@@ -1,5 +1,5 @@
 class profile::ssh_server {
-  package {'openssh-server':
+  package { 'openssh-server':
     ensure => present,
   }
   service { 'sshd':
@@ -11,5 +11,5 @@ class profile::ssh_server {
     user   => 'root',
     type   => 'ssh-rsa',
     key    => '',
-  }  
+  }
 }
