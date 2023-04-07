@@ -1,0 +1,21 @@
+CPUS="1"
+MEMORY="1024"
+
+Vagrant.configure("2") do |config|
+  
+  if Vagrant.has_plugin?("vagrant-proxyconf")
+    config.proxy.http     = "http://genproxy.amdocs.com:8080"
+    config.proxy.https    = "http://genproxy.amdocs.com:8080"
+    config.proxy.no_proxy = "nexus.vubiquity.com,10.134.11.132,127.0.0.1,localhost,vubiquity.com,master.puppet.vm"
+  end
+
+  config.vm.box = "centos/7"
+  config.vm.hostname = "master.puppet.vm"
+
+  config.vm.provider "virtualbox" do |v|
+    v.name = "master.puppet.vm"
+    v.memory = MEMORY
+    v.cpus = CPUS
+  end
+
+end
